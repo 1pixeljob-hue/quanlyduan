@@ -23,6 +23,12 @@ jobs:
         
       - name: 🚀 Build Project
         run: npm run build
+        
+      - name: 📦 Prepare Deployment Folder
+        run: |
+          mkdir deploy_staging
+          cp -r build/* deploy_staging/
+          cp -r src/backend deploy_staging/
       
       - name: 📂 Sync files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -31,11 +37,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          # Đẩy toàn bộ mã nguồn lên thay vì chỉ thư mục frontend đã build
           server-dir: /public_html/ 
-          local-dir: ./
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            .github/**
+          local-dir: ./deploy_staging/

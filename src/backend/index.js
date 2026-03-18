@@ -59,13 +59,22 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/codex', codexRoutes);
 app.use('/api/logs', logRoutes);
 
-// 404 handler
-app.use((req, res) => {
+// Serve static files from the frontend build
+const path = require('path');
+app.use(express.static(path.join(__dirname, '..')));
+
+// 404 handler for API routes
+app.use('/api/*', (req, res) => {
   res.status(404).json({
     success: false,
     error: 'Endpoint không tồn tại',
     path: req.path
   });
+});
+
+// Catch-all route to serve the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // Error handler
