@@ -1,0 +1,36 @@
+name: Deploy Web App to Hosting
+
+on:
+  push:
+    branches:
+      - main # Change this to master if your default branch is master
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+      
+      - name: 📦 Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          
+      - name: 🔨 Install dependencies
+        run: npm install
+        
+      - name: 🚀 Build Project
+        run: npm run build
+      
+      - name: 📂 Sync files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Thư mục trên hosting của bạn (thường là public_html hoặc www)
+          server-dir: /public_html/ 
+          # Thư mục chứa code sau khi build (trong vite.config.ts của bạn được set là 'build')
+          local-dir: ./build/

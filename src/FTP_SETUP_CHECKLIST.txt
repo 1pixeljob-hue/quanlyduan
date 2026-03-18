@@ -1,0 +1,179 @@
+════════════════════════════════════════════════════════════
+🚀 GITHUB ACTIONS FTP DEPLOYMENT - SETUP CHECKLIST
+════════════════════════════════════════════════════════════
+
+📋 BƯỚC 1: LẤY THÔNG TIN FTP
+════════════════════════════════════════════════════════════
+□ Login vào cPanel/Hosting Panel
+□ Vào FTP Accounts
+□ Tạo hoặc xem FTP account
+□ Ghi nhớ 4 thông tin:
+  □ FTP Server:    _______________________________
+  □ FTP Username:  _______________________________
+  □ FTP Password:  _______________________________
+  □ FTP Directory: _______________________________
+
+□ Test FTP với FileZilla (optional)
+
+
+📋 BƯỚC 2: ADD GITHUB SECRETS
+════════════════════════════════════════════════════════════
+□ Vào GitHub repository: 
+  https://github.com/1pixeljob-hue/Onetask
+
+□ Settings → Secrets and variables → Actions
+
+□ Click "New repository secret" và thêm:
+
+  Secret 1:
+  □ Name: FTP_SERVER
+  □ Value: _______________________________
+  □ Click "Add secret"
+
+  Secret 2:
+  □ Name: FTP_USERNAME
+  □ Value: _______________________________
+  □ Click "Add secret"
+
+  Secret 3:
+  □ Name: FTP_PASSWORD
+  □ Value: _______________________________
+  □ Click "Add secret"
+
+  Secret 4:
+  □ Name: FTP_SERVER_DIR
+  □ Value: _______________________________
+  □ Click "Add secret"
+
+  Secret 5 (Optional):
+  □ Name: VITE_API_URL
+  □ Value: _______________________________
+  □ Click "Add secret"
+
+□ Verify có 4-5 secrets trong danh sách
+
+
+📋 BƯỚC 3: VERIFY WORKFLOW FILES
+════════════════════════════════════════════════════════════
+□ Check files đã tồn tại:
+  □ .github/workflows/deploy-frontend-ftp.yml
+  □ .github/workflows/deploy-backend-ftp.yml
+  □ .github/workflows/deploy-all-ftp.yml
+
+□ Files đã được push lên GitHub
+
+
+📋 BƯỚC 4: TEST DEPLOYMENT
+════════════════════════════════════════════════════════════
+□ Vào GitHub Actions tab:
+  https://github.com/1pixeljob-hue/Onetask/actions
+
+□ Click workflow "🎨 Deploy Frontend via FTP"
+
+□ Click "Run workflow" button
+
+□ Select branch: main
+
+□ Click "Run workflow"
+
+□ Đợi workflow chạy...
+
+□ Check status:
+  □ ✅ Checkout code
+  □ ✅ Setup Node.js
+  □ ✅ Install dependencies
+  □ ✅ Build production
+  □ ✅ Deploy to FTP
+  □ ✅ Deployment Success
+
+□ Workflow completed with ✅
+
+
+📋 BƯỚC 5: VERIFY TRÊN WEBSITE
+════════════════════════════════════════════════════════════
+□ Truy cập website: _______________________________
+
+□ Website hiển thị đúng
+
+□ Không có lỗi 404
+
+□ Check console (F12) không có errors
+
+□ Files mới nhất đã được upload
+
+
+📋 BƯỚC 6: TEST AUTO-DEPLOY
+════════════════════════════════════════════════════════════
+□ Thay đổi nhỏ trong Figma (ví dụ: sửa text)
+
+□ Figma → Integrations → Manage GitHub
+
+□ Push to 1pixeljob-hue/Onetask
+
+□ Vào GitHub Actions tab
+
+□ Workflow tự động trigger
+
+□ Wait for ✅ success
+
+□ Website tự động cập nhật
+
+
+📋 OPTIONAL: BACKEND DEPLOYMENT
+════════════════════════════════════════════════════════════
+Nếu deploy backend qua FTP:
+
+□ Backend files uploaded qua workflow
+
+□ SSH vào hosting:
+  ssh _______________________________
+
+□ Navigate to backend:
+  cd /path/to/backend
+
+□ Restart PM2:
+  pm2 restart 1pixel-backend
+
+□ Check status:
+  pm2 status
+
+□ Test API:
+  curl http://localhost:3001/api/health
+
+□ Backend hoạt động ✅
+
+
+════════════════════════════════════════════════════════════
+✅ HOÀN TẤT!
+════════════════════════════════════════════════════════════
+
+□ FTP credentials verified
+□ GitHub Secrets configured
+□ Workflow files in place
+□ Manual deployment successful
+□ Auto-deployment working
+□ Website live and updating
+□ Backend running (if applicable)
+
+🎉 AUTO FTP DEPLOYMENT ACTIVE!
+
+Từ giờ mỗi khi push code → Tự động deploy qua FTP!
+
+
+════════════════════════════════════════════════════════════
+📚 DOCUMENTATION
+════════════════════════════════════════════════════════════
+
+Full Guide:
+  → GITHUB_ACTIONS_FTP_SETUP.md
+
+Quick Summary:
+  → FTP_DEPLOYMENT_SUMMARY.md
+
+Troubleshooting:
+  → GITHUB_ACTIONS_FTP_SETUP.md (Troubleshooting section)
+
+
+════════════════════════════════════════════════════════════
+Made with 🦆 by 1Pixel Team | Date: 18/03/2026
+════════════════════════════════════════════════════════════

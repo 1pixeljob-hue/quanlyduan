@@ -1,0 +1,103 @@
+# ⚡ QUICK START - 3 BƯỚC SETUP AUTO-DEPLOYMENT
+
+## 🎯 BƯỚC 1: PUSH TỪ FIGMA MAKE (NGAY BÂY GIỜ!)
+
+**Trong Figma Make:**
+
+```
+Integrations → Manage GitHub → Push to GitHub
+```
+
+**Commit message:**
+```
+🚀 Add build config for auto-deployment
+```
+
+**Click "Push"!** ✅
+
+---
+
+## 🎯 BƯỚC 2: TẠO WORKFLOW TRÊN GITHUB
+
+### **A. Vào repository:**
+
+```
+https://github.com/1pixeljob-hue/Onetask
+```
+
+### **B. Tạo file mới:**
+
+1. Click **"Add file"** → **"Create new file"**
+
+2. **File name:** (nhập chính xác!)
+   ```
+   .github/workflows/deploy-frontend-ftp.yml
+   ```
+
+3. **Copy nội dung từ file:**
+   ```
+   /github-workflows-deploy-frontend-ftp.yml
+   ```
+
+4. **Paste vào editor**
+
+5. **Commit:** "Add workflow"
+
+---
+
+## 🎯 BƯỚC 3: ADD 4 SECRETS
+
+### **Vào:**
+
+```
+https://github.com/1pixeljob-hue/Onetask/settings/secrets/actions
+```
+
+### **Add:**
+
+| Secret | Value | Lưu Ý |
+|--------|-------|-------|
+| `FTP_SERVER` | `ftp.yourdomain.com` | No `http://` |
+| `FTP_USERNAME` | `user@domain.com` | Full username |
+| `FTP_PASSWORD` | `YourPassword123` | Exact password |
+| `FTP_SERVER_DIR` | `/public_html/` | **MUST end with `/`** ⚠️ |
+
+**Click "Add secret" cho mỗi cái!**
+
+---
+
+## ✅ TEST
+
+### **Vào Actions:**
+
+```
+https://github.com/1pixeljob-hue/Onetask/actions
+```
+
+### **Run workflow:**
+
+1. Click "🎨 Deploy Frontend to Hosting"
+2. Click "Run workflow"
+3. Wait ~5 phút
+4. ✅ Check website!
+
+---
+
+## 🎊 DONE!
+
+**Từ giờ:**
+
+```
+Push từ Figma → GitHub tự động deploy! 🚀
+```
+
+---
+
+## 📖 DOCS
+
+- **Full guide:** `/COMPLETE_DEPLOYMENT_GUIDE.md`
+- **Workflow template:** `/github-workflows-deploy-frontend-ftp.yml`
+
+---
+
+🦆 **3 bước → Auto-deployment sống!**

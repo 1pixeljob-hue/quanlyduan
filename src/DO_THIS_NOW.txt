@@ -1,0 +1,76 @@
+════════════════════════════════════════════════════════════════
+  ✅ SẴN SÀNG PUSH LÊN GITHUB - LÀM THEO 3 BƯỚC NÀY!
+════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────┐
+│ BƯỚC 1: PUSH TỪ FIGMA MAKE (NGAY BÂY GIỜ!)                 │
+└─────────────────────────────────────────────────────────────┘
+
+Figma Make → Integrations → Manage GitHub → Push
+
+Commit: "🚀 Setup auto-deployment config"
+
+✅ DONE!
+
+────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ BƯỚC 2: TẠO WORKFLOW FILE TRÊN GITHUB                      │
+└─────────────────────────────────────────────────────────────┘
+
+1. Vào: github.com/1pixeljob-hue/Onetask
+
+2. Click: Add file → Create new file
+
+3. File name (nhập chính xác!):
+   .github/workflows/deploy-frontend-ftp.yml
+
+4. Copy nội dung từ file:
+   /github-workflows-deploy-frontend-ftp.yml
+
+5. Commit!
+
+✅ DONE!
+
+────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ BƯỚC 3: ADD 4 GITHUB SECRETS                               │
+└─────────────────────────────────────────────────────────────┘
+
+Vào: github.com/1pixeljob-hue/Onetask/settings/secrets/actions
+
+Add 4 secrets:
+
+  [ ] FTP_SERVER      = ftp.yourdomain.com
+  [ ] FTP_USERNAME    = user@yourdomain.com
+  [ ] FTP_PASSWORD    = YourPassword123
+  [ ] FTP_SERVER_DIR  = /public_html/  ⚠️ PHẢI CÓ / CUỐI!
+
+✅ DONE!
+
+────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ TEST: RUN WORKFLOW                                          │
+└─────────────────────────────────────────────────────────────┘
+
+1. Vào: github.com/1pixeljob-hue/Onetask/actions
+
+2. Click: "🎨 Deploy Frontend to Hosting"
+
+3. Click: "Run workflow"
+
+4. Wait ~5-7 minutes
+
+5. Check website!
+
+✅ THÀNH CÔNG!
+
+════════════════════════════════════════════════════════════════
+  🎉 SAU ĐÓ: MỖI LẦN PUSH TỪ FIGMA → TỰ ĐỘNG DEPLOY!
+════════════════════════════════════════════════════════════════
+
+📖 Đọc chi tiết: /START_HERE_PUSH_READY.md
+
+🚀 GO NOW!

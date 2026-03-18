@@ -1,0 +1,48 @@
+name: 🎨 Deploy Frontend to Hosting
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'backend/**'
+      - '**.md'
+      - '.gitignore'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: 🚀 Build & Deploy Frontend
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🏗️ Build production
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: 📤 Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: ./dist/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env*
