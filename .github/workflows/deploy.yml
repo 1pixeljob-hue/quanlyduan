@@ -31,7 +31,11 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          # Thư mục trên hosting của bạn (thường là public_html hoặc www)
+          # Đẩy toàn bộ mã nguồn lên thay vì chỉ thư mục frontend đã build
           server-dir: /public_html/ 
-          # Thư mục chứa code sau khi build (trong vite.config.ts của bạn được set là 'build')
-          local-dir: ./build/
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .github/**
