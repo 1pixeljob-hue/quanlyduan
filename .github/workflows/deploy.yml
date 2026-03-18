@@ -30,6 +30,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
           # Thư mục trên hosting của bạn (thường là public_html hoặc www)
           server-dir: /public_html/ 
           # Thư mục chứa code sau khi build (trong vite.config.ts của bạn được set là 'build')
