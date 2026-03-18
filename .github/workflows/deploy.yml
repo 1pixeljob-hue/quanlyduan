@@ -24,6 +24,12 @@ jobs:
       - name: 🚀 Build Project
         run: npm run build
         
+      - name: 🔨 Install backend dependencies
+        run: |
+          cd src/backend
+          npm install
+          cd ../..
+          
       - name: 📦 Prepare Deployment Folder
         run: |
           mkdir deploy_staging
