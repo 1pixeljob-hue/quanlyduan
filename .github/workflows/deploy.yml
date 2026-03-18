@@ -35,6 +35,9 @@ jobs:
           mkdir deploy_staging
           cp -r build/* deploy_staging/
           cp -r src/backend deploy_staging/
+          
+      - name: 🔓 Un-ignore node_modules
+        run: rm -f .gitignore
       
       - name: 📂 Sync files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
