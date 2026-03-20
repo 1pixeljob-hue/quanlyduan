@@ -61,7 +61,7 @@ app.use('/api/logs', logRoutes);
 
 // Serve static files from the frontend build
 const path = require('path');
-app.use(express.static(path.join(__dirname, '..')));
+app.use(express.static(path.join(__dirname, '.')));
 
 // 404 handler for API routes
 app.use('/api/*', (req, res) => {
@@ -74,7 +74,7 @@ app.use('/api/*', (req, res) => {
 
 // Catch-all route to serve the React app
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Error handler
